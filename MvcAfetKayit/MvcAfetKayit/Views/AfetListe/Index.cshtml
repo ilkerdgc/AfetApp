@@ -1,0 +1,134 @@
+﻿@model IEnumerable<MvcAfetKayit.Models.AfetDBmodel.Afetler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Afet Listesi</h2>
+
+<p>
+    <a class="btn btn-success" href="/Home/Index">Yeni Kayıt</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Afet Adı")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeriNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuideNo)
+        </th>
+        <th>
+            @Html.Label("Başlangıç Tarihi")
+        </th>
+        <th>
+            @Html.Label("Bitiş Tarihi")
+        </th>
+        <th>
+            @Html.Label("Süre")
+        </th>
+        <th>
+            @Html.Label("Afet Türü")
+        </th>
+        <th>
+            @Html.Label("İl")
+        </th>
+        <th>
+            @Html.Label("İlçe")
+        </th>
+        <th>
+            @Html.Label("Köy")
+        </th>
+        <th>
+            @Html.Label("Mahalle")
+        </th>
+        <th>
+            @Html.Label("Belde")
+        </th>
+        <th>
+            @Html.Label("Neden")
+        </th>
+        <th>
+            @Html.Label("Enlem")
+        </th>
+        <th>
+            @Html.Label("Boylam")
+        </th>
+        <th>
+            @Html.Label("Açıklama")
+        </th>
+        <th>
+            @Html.Label("Etkilediği Alanlar")
+        </th>
+        <th>
+            @Html.Label("Kaynak")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AfetKategori.AfetAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeriNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuideNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaslangicTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BitisTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AfetTuru)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Il)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ilce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Koy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mahalle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Belde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Neden)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Enlem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Boylam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NedenAciklama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EtkiledigiAlanlar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kaynak)
+        </td>
+        <td>
+            @Html.ActionLink("Sil", "Delete", new { id=item.AfetID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

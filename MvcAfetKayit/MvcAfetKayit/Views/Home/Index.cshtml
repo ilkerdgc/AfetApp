@@ -1,0 +1,181 @@
+﻿@model MvcAfetKayit.ViewModel.AfetTurkiyeModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div style="background-color:#82c8db; margin:30px 50px auto 50px" class="navbar navbar-light navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            @Html.ActionLink("Afet Giriş", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "color:black" })
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <div class="row" style="margin:50px 25px 0 0 ">
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="textinput">Seri No</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" value="@ViewBag.Number" name="SeriNo" disabled>
+                </div>
+                <label class="col-sm-1 control-label" for="textinput">GUDE No</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" value="@ViewBag.Number2" name="GudeNo" disabled>
+                </div>
+                <label class="col-sm-1 control-label" for="textinput"></label>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
+        <div class="row" style="margin:-35px 25px 0 0 ">
+            <div class="form-group" style="margin:40px auto auto auto ">
+                <label class="col-sm-1 control-label" for="textinput">Baş. Tarihi</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control" name="BasTarihi" required>
+                </div>
+                <label class="col-sm-1 control-label" for="textinput">Bitiş Tarihi</label>
+                <div class="col-sm-3">
+                    <input type="date" class="form-control" name="BitisTarihi" required>
+                </div>
+                <label class="col-sm-1 control-label" for="textinput">Süre(Gün)</label>
+                <div class="col-sm-3">
+                    <input type="text" placeholder="Süre(Gün)" class="form-control" name="Sure" required>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:-35px 25px 0 0 ">
+            <div class="form-group" style="margin:40px auto auto auto ">
+                <label class="col-sm-1 control-label" for="textinput">Afet Türü</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.AfetID,Model.Afetler, htmlAttributes: new { @class = "form-control", required = "required", id = "deger4" })
+                </div>
+                <label class="col-sm-1 control-label" for="textinput">İl</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.ilID, Model.Iller, htmlAttributes: new { @class = "form-control", required = "required" })
+                </div>
+                <label class="col-sm-1 control-label" for="textinput">İlçe</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.IlceID, Model.İlceler, htmlAttributes: new { @class = "form-control", required = "required" })
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:-35px 25px 0 0 ">
+            <div class="form-group" style="margin:40px auto auto auto ">
+                <label class="col-sm-1 control-label" for="textinput">Semt</label>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(m => m.SemtID, Model.Semtler, htmlAttributes: new { @class = "form-control", required = "required" })
+                </div>
+                <label class="col-sm-1 control-label" for="textinput">Mahalle</label>
+                <div class="col-sm-3">
+                   @Html.DropDownListFor(m => m.MahalleID, Model.Mahalleler, htmlAttributes: new { @class = "form-control", required = "required" })
+                </div>
+                <label class="col-sm-1 control-label" for="textinput">Belde/Mevki</label>
+                <div class="col-sm-3">
+                    <input type="text" placeholder="Boylam" class="form-control" name="Belde" required>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:-35px 25px 0 0 ">
+            <div class="form-group" style="margin:40px auto auto auto ">
+                <label class="col-sm-1 control-label" for="textinput">Neden</label>
+                <div class="col-sm-3">
+                    <input type="text" placeholder="Neden" class="form-control" name="Neden" required>
+                </div>
+                <label class="col-sm-1 control-label" for="textinput">Enlem</label>
+                <div class="col-sm-3">
+                    <input type="text" placeholder="Enlem" class="form-control" name="Enlem" required>
+                </div>
+                <label class="col-sm-1 control-label" for="textinput">Boylam</label>
+                <div class="col-sm-3">
+                    <input type="text" placeholder="Boylam" class="form-control" name="Boylam" required>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:20px 25px 0 0 ">
+            <div class="form-group" style="margin:40px auto auto auto ">
+                <label class="col-sm-1 control-label" for="textinput">Neden Açıklama</label>
+                <div class="col-sm-11">
+                    <input type="text" placeholder="Neden Açıklama" class="form-control" name="Neden" required>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:-35px 25px 0 0 ">
+            <div class="form-group" style="margin:40px auto auto auto ">
+                <label class="col-sm-1 control-label" for="textinput">Etkilediği Alanlar</label>
+                <div class="col-sm-11">
+                    <input type="text" placeholder="Etkilediği Alanlar" class="form-control" name="EtAlan" required>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:-35px 25px 0 0 ">
+            <div class="form-group" style="margin:40px auto auto auto ">
+                <label class="col-sm-1 control-label" for="textinput">Kaynak</label>
+                <div class="col-sm-11">
+                    <input type="text" placeholder="Kaynak" class="form-control" name="Kaynak" required>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin:10px 50px 0 5px; background-color:#82c8db; height:30px ">
+            <label class="col-sm-1 control-label" for="textinput"></label>
+        </div>
+        <div class="row" style="margin:10px 50px 0 5px; background-color:#e3f2fd; height:30px ">
+            <label class="col-sm-8"></label>
+            <label class="col-sm-2" for="textinput"><input type="submit" value="Kaydet" class="btn btn-default" /></label>
+            <label class="col-sm-2" for="textinput"><a href="/AfetListe/Index"><input value="Afet Listesi" class="btn btn-default" /></a></label>
+        </div>
+    </div>
+}
+
+@section script{
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $("#ilID").change(function () {
+              var id = $(this).val();
+              var ilceList = $("#IlceID");
+              ilceList.empty()
+              $.ajax({
+                  url: '/Home/IlceList',
+                  type: 'POST',
+                  data: { 'id': id },
+                  success: function (data) {
+                      $.each(data, function (index, option) {
+                          ilceList.append('<option value='+ option.Value +'>' + option.Text + '</option>')
+                      })
+                  }
+              })
+          })
+          $("#IlceID").change(function () {
+              var id = $(this).val();
+              var semtList = $("#SemtID");
+              semtList.empty()
+              $.ajax({
+                  url: '/Home/SemtList',
+                  type: 'POST',
+                  data: { 'id': id },
+                  success: function (data) {
+                      $.each(data, function (index, option) {
+                          semtList.append('<option value=' + option.Value + '>' + option.Text + '</option>')
+                      })
+                  }
+              })
+          })
+          $("#SemtID").change(function () {
+              var id = $(this).val();
+              var mahalleList = $("#MahalleID");
+              mahalleList.empty()
+              $.ajax({
+                  url: '/Home/MahalleList',
+                  type: 'POST',
+                  data: { 'id': id },
+                  success: function (data) {
+                      $.each(data, function (index, option) {
+                          mahalleList.append('<option value=' + option.Value + '>' + option.Text + '</option>')
+                      })
+                  }
+              })
+          })
+      })
+    </script>   
+}
